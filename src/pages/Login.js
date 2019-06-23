@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -32,10 +31,6 @@ export default class Login extends React.Component {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Navbar.Brand href="#home">Online Classroom</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Nav className="mr-auto">
-            <Nav.Link href="/home">My Classes</Nav.Link>
-            <Nav.Link href="/home">Add New Class</Nav.Link>
-          </Nav>
         </Navbar>
         <Container>
           <Row>
