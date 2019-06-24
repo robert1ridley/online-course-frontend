@@ -91,7 +91,6 @@ export default class SignIn extends React.Component{
      .then(response => {
        let res = JSON.stringify(response);
        res = JSON.parse(res);
-       console.log(res);
        this.handleResponse(res);
      })
      .catch(error => console.error('Error:', error))
@@ -104,7 +103,7 @@ export default class SignIn extends React.Component{
         return <Redirect to="/my/student" />;
       }
       if (this.state.usertype === 'TEACHER'){
-        return <Redirect to="/my/teacher" />;
+        return <Redirect to="/my/teacher/classes/mine" />;
       }
     }
     return (

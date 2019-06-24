@@ -1,7 +1,9 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import AddClass from '../components/AddClass';
+import ClassesList from '../components/ClassesList';
 
 export default class TeacherMain extends React.Component {
   state = {
@@ -76,6 +78,13 @@ export default class TeacherMain extends React.Component {
     .catch(err => { console.log(err) })
   }
 
+  onBadToken = () => {
+    sessionStorage.clear()
+    this.setState({
+      loggedIn: false
+    })
+  }
+
   render() {
     if (!this.state.loggedIn) {
       return  <Redirect to="/" />
@@ -84,19 +93,35 @@ export default class TeacherMain extends React.Component {
       return <p>Access not permitted!</p>
     }
     return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="/">Online Classroom</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Nav className="mr-auto">
-          <Nav.Link href="/">My Classes</Nav.Link>
-          <Nav.Link href="/">Add New Class</Nav.Link>
-        </Nav>
-        <Nav className="justify-content-end" activeKey="/">
-          <Nav.Item>
-            <Nav.Link onClick={this.onLogout}>Logout</Nav.Link>
-          </Nav.Item>
-        </Nav>
-      </Navbar>
+      <div>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Navbar.Brand href="/">Online Classroom</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Nav className="mr-auto">
+            <Nav.Link href="/my/teacher/classes">My Classes</Nav.Link>
+            <Nav.Link href="/my/teacher/classes/add">Add New Class</Nav.Link>
+          </Nav>
+          <Nav className="justify-content-end" activeKey="/">
+            <Nav.Item>
+              <Nav.Link onClick={this.onLogout}>Logout</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar>
+        <Switch>
+          <Route exact path={`${this.props.match.path}`} render={(props) => 
+            <ClassesList
+              data={this.state}
+              onBadToken={this.onBadToken}
+            />
+          }/>
+          <Route path={`${this.props.match.path}/add`} render={(props) => 
+            <AddClass
+              data={this.state}
+              onBadToken={this.onBadToken}
+            />
+          }/>
+        </Switch>
+      </div>
     )
   }
 }

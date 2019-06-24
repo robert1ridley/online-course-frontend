@@ -69,7 +69,6 @@ export default class StudentMain extends React.Component {
     })
     .then(res => res.json())
     .then(data => { 
-      console.log(data)
       sessionStorage.clear()
       this.setState({
         loggedIn: false
