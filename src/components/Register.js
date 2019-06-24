@@ -90,7 +90,7 @@ export default class Register extends React.Component{
         return <Redirect to="/my/student" />;
       }
       if (this.state.usertype === 'TEACHER'){
-        return <Redirect to="/my/teacher" />;
+        return <Redirect to="/my/teacher/classes" />;
       }
     }
     return (
