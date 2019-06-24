@@ -29,7 +29,7 @@ export default class Login extends React.Component {
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="#home">Online Classroom</Navbar.Brand>
+          <Navbar.Brand href="/">Online Classroom</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         </Navbar>
         <Container>

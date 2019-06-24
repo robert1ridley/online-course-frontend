@@ -59,7 +59,7 @@ export default class TeacherMain extends React.Component {
 }
 
   onLogout = () => {
-    fetch('http://127.0.0.1:5000/logout/refresh', {
+    fetch('http://127.0.0.1:5000/logout/access', {
       method: 'POST',
       headers: {
         'Content-Type':'application/json',
@@ -68,7 +68,6 @@ export default class TeacherMain extends React.Component {
     })
     .then(res => res.json())
     .then(data => { 
-      console.log(data)
       sessionStorage.clear()
       this.setState({
         loggedIn: false
@@ -79,20 +78,20 @@ export default class TeacherMain extends React.Component {
 
   render() {
     if (!this.state.loggedIn) {
-      return  <Redirect to="/Login" />
+      return  <Redirect to="/" />
     }
     if (this.state.usertype !== 'TEACHER') {
       return <p>Access not permitted!</p>
     }
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Online Classroom</Navbar.Brand>
+        <Navbar.Brand href="/">Online Classroom</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Nav className="mr-auto">
           <Nav.Link href="/">My Classes</Nav.Link>
           <Nav.Link href="/">Add New Class</Nav.Link>
         </Nav>
-        <Nav className="justify-content-end" activeKey="/home">
+        <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
             <Nav.Link onClick={this.onLogout}>Logout</Nav.Link>
           </Nav.Item>

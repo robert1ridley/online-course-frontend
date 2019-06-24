@@ -17,6 +17,20 @@ export default class SignIn extends React.Component{
     loggedIn: false
   }
 
+  componentDidMount() {
+    let accessToken = sessionStorage.getItem('accessToken');
+    let refreshToken = sessionStorage.getItem('refreshToken');
+    let usertype = sessionStorage.getItem('usertype');
+    if (usertype !== null & refreshToken !==null & accessToken !== null) {
+      this.setState({
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        usertype: usertype,
+        loggedIn: true
+      })
+    }
+  }
+
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,

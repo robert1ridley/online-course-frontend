@@ -80,7 +80,7 @@ export default class StudentMain extends React.Component {
 
   render() {
     if (!this.state.loggedIn) {
-      return  <Redirect to="/Login" />
+      return  <Redirect to="/" />
     }
     if (this.state.usertype !== 'STUDENT') {
       return <p>Access not permitted!</p>
@@ -93,7 +93,7 @@ export default class StudentMain extends React.Component {
           <Nav.Link href="/">My Classes</Nav.Link>
           <Nav.Link href="/">Add New Class</Nav.Link>
         </Nav>
-        <Nav className="justify-content-end" activeKey="/home">
+        <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
             <Nav.Link onClick={this.onLogout}>Logout</Nav.Link>
           </Nav.Item>
