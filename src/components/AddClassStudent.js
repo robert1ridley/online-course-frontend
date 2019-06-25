@@ -59,6 +59,7 @@ export default class AddClassStudent extends React.Component{
       })
       .then((res) => {
           if (res.status !== 200) {
+            // TODO: FIX the onbadtoken method call
             sessionStorage.clear()
             onBadToken()
           }  
