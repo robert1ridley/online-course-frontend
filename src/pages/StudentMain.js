@@ -77,6 +77,13 @@ export default class StudentMain extends React.Component {
     .catch(err => { console.log(err) })
   }
 
+  onBadToken = () => {
+    sessionStorage.clear()
+    this.setState({
+      loggedIn: false
+    })
+  }
+
   render() {
     if (!this.state.loggedIn) {
       return  <Redirect to="/" />

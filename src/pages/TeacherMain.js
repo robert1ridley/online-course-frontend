@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import AddClass from '../components/AddClass';
 import ClassesList from '../components/ClassesList';
+import SingleClassTeacher from '../components/SingleClassTeacher';
 
 export default class TeacherMain extends React.Component {
   state = {
@@ -11,6 +12,7 @@ export default class TeacherMain extends React.Component {
     refreshToken: '',
     userid: '',
     usertype: '',
+    username: '',
     loggedIn: true
   }
 
@@ -49,13 +51,19 @@ export default class TeacherMain extends React.Component {
             refreshToken: '',
             userid: '',
             usertype: '',
+            username: '',
             loggedIn: false
           })
         }  
         return res.json()
         }
       )
-    .then(data => {console.log(data)})
+    .then(data => {
+      console.log(data)
+      this.setState({
+        username: data.user.username
+      })
+    })
     .catch(err => {console.log(err)})
   }
 }
@@ -112,12 +120,21 @@ export default class TeacherMain extends React.Component {
             <ClassesList
               data={this.state}
               onBadToken={this.onBadToken}
+              {...props}
             />
           }/>
           <Route path={`${this.props.match.path}/add`} render={(props) => 
             <AddClass
               data={this.state}
               onBadToken={this.onBadToken}
+              {...props}
+            />
+          }/>
+          <Route path={`${this.props.match.path}/:classid`} render={(props) => 
+            <SingleClassTeacher
+              data={this.state}
+              onBadToken={this.onBadToken}
+              {...props}
             />
           }/>
         </Switch>

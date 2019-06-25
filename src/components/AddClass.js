@@ -103,6 +103,7 @@ export default class AddClass extends React.Component {
                                     {this.state.message}
                                 </Alert>
                             }
+                            <h1 style={{marginBottom: 20}}>Add a new class!</h1>
                             <Form>
                                 <Form.Group controlId="formClassCreate">
                                     <Form.Label>Class Name</Form.Label>
