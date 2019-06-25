@@ -17,7 +17,7 @@ export default class SingleClassTeacher extends React.Component {
     }
     componentDidMount() {
         const classId = this.props.match.params.classid;
-        const { accessToken, refreshToken, loggedIn, userid, username, usertype } = this.props.data;
+        const { accessToken, userid, usertype } = this.props.data;
         const payload = {
             userid: userid,
             usertype: usertype,

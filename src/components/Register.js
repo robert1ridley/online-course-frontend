@@ -87,7 +87,7 @@ export default class Register extends React.Component{
   render(){
     if (this.state.loggedIn) {
       if (this.state.usertype === 'STUDENT'){
-        return <Redirect to="/my/student" />;
+        return <Redirect to="/my/student/classes" />;
       }
       if (this.state.usertype === 'TEACHER'){
         return <Redirect to="/my/teacher/classes" />;
