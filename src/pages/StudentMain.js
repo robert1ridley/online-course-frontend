@@ -103,7 +103,7 @@ export default class StudentMain extends React.Component {
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="#home">Online Classroom</Navbar.Brand>
+          <Navbar.Brand href="#home">Student Classroom</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav className="mr-auto">
             <Nav.Link href="/my/student/classes">My Classes</Nav.Link>

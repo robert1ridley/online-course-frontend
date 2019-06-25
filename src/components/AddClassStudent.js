@@ -1,10 +1,12 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { Redirect } from 'react-router-dom';
 
 export default class AddClassStudent extends React.Component{
     state = {
-        classesList: []
+        classesList: [],
+        classAdded: false
     }
 
     componentDidMount(){
@@ -13,27 +15,26 @@ export default class AddClassStudent extends React.Component{
             usertype: usertype
         }
         fetch('http://127.0.0.1:5000/user/student/allclasses', {
-        method: 'POST',
-        headers: {
-          'Content-Type':'application/json',
-          'Authorization': 'Bearer ' + accessToken
-        },
-        body: JSON.stringify(payload)
-      })
-      .then((res) => {
-          if (res.status !== 200) {
-            sessionStorage.clear()
-            onBadToken()
-          }  
-          return res.json()
-          }
-        )
-      .then(data => {
-          this.setState({
-              classesList: JSON.parse(data)
-          })
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+                'Authorization': 'Bearer ' + accessToken
+            },
+            body: JSON.stringify(payload)
         })
-      .catch(err => {console.log(err)})
+        .then((res) => {
+            if (res.status !== 200) {
+                sessionStorage.clear()
+                onBadToken()
+            }  
+            return res.json()
+        })
+        .then(data => {
+            this.setState({
+                classesList: JSON.parse(data)
+            })
+        })
+        .catch(err => {console.log(err)})
     }
 
     removeTimeFromDate = (dateIn) => {
@@ -68,16 +69,22 @@ export default class AddClassStudent extends React.Component{
         )
       .then(data => {
           console.log(JSON.stringify(data))
+          this.setState({
+              classAdded: true
+          })
         })
       .catch(err => {console.log(err)})
     }
 
     render(){
-        const { classesList } = this.state;
+        const { classesList, classAdded } = this.state;
         const { username } = this.props.data;
+        if (classAdded){
+            return <Redirect to='/' />
+        }
         return (
             <div style={{marginTop: 50}}>
-                <h1>Hi {username}! Your Classes</h1>
+                <h1>Hi {username}! Available Classes:</h1>
                     {
                         classesList &&
                         <div style={{marginTop: 30}}>

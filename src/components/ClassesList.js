@@ -48,7 +48,7 @@ export default class ClassesList extends React.Component {
             <div style={{marginTop: 50}}>
                 <h1>Hi {username}! Your Classes</h1>
                     {
-                        userClasses &&
+                        userClasses.length > 0 &&
                         <div style={{marginTop: 30}}>
                             <ul>
                                 {
