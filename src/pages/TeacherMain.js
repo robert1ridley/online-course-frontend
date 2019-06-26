@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import AddClass from '../components/AddClass';
 import ClassesList from '../components/ClassesList';
 import SingleClassTeacher from '../components/SingleClassTeacher';
+import AddAssignment from '../components/AddAssignment';
 
 export default class TeacherMain extends React.Component {
   state = {
@@ -130,8 +131,15 @@ export default class TeacherMain extends React.Component {
               {...props}
             />
           }/>
-          <Route path={`${this.props.match.path}/:classid`} render={(props) => 
+          <Route path={`${this.props.match.path}/:classid`} exact render={(props) => 
             <SingleClassTeacher
+              data={this.state}
+              onBadToken={this.onBadToken}
+              {...props}
+            />
+          }/>
+          <Route path={`${this.props.match.path}/:classid/addassignment`} render={(props) => 
+            <AddAssignment
               data={this.state}
               onBadToken={this.onBadToken}
               {...props}
