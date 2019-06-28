@@ -108,22 +108,20 @@ export default class SingleClassTeacher extends React.Component {
                     <Table style={styles.lowerMargin} striped bordered hover>
                         <thead>
                             <tr>
-                                <th>Assignments Set</th>
+                                <th colSpan="2">Assignments Set</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.state.assignments.map(assignment =>
-                                    <div>
-                                        <tr key={assignment.assignment_id}>
-                                            <td>{assignment.assignment_title}</td>
-                                            <td><Link>View</Link></td>
-                                        </tr>
-                                    </div>
+                                    <tr key={assignment.assignment_id}>
+                                        <td style={{width: '90%'}}>{assignment.assignment_title}</td>
+                                        <td style={{width: '10%'}}><Link to="/">View</Link></td>
+                                    </tr>
                                 )
                             }
                             <tr>
-                                <td><Button href={`${this.props.match.params.classid}/addassignment`}>Add Assignment</Button></td>
+                                <td colSpan="2"><Button href={`${this.props.match.params.classid}/addassignment`}>Add Assignment</Button></td>
                             </tr>
                         </tbody>
                     </Table>

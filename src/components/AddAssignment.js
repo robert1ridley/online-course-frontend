@@ -92,7 +92,7 @@ export default class AddAssignment extends React.Component {
 
     render(){
         if (this.state.addSuccess) {
-            return <Redirect to="/ass" />
+            return <Redirect to={'/'} />
         }
         return (
             <div style={{marginTop: 60}}>
