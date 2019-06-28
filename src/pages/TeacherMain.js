@@ -6,6 +6,7 @@ import AddClass from '../components/AddClass';
 import ClassesList from '../components/ClassesList';
 import SingleClassTeacher from '../components/SingleClassTeacher';
 import AddAssignment from '../components/AddAssignment';
+import SingleAssignmentTeacher from '../components/SingleAssignmentTeacher';
 
 export default class TeacherMain extends React.Component {
   state = {
@@ -22,6 +23,7 @@ export default class TeacherMain extends React.Component {
     let refreshToken = sessionStorage.getItem('refreshToken');
     let id = sessionStorage.getItem('uuid');
     let usertype = sessionStorage.getItem('usertype');
+    let username = sessionStorage.getItem('username');
     const payload = {
       usertype: usertype,
       userid: id
@@ -30,6 +32,7 @@ export default class TeacherMain extends React.Component {
       accessToken: accessToken,
       refreshToken: refreshToken,
       userid: id,
+      username: username,
       usertype: usertype
     })
     if (!accessToken || !refreshToken){
@@ -140,6 +143,13 @@ export default class TeacherMain extends React.Component {
           }/>
           <Route path={`${this.props.match.path}/:classid/addassignment`} render={(props) => 
             <AddAssignment
+              data={this.state}
+              onBadToken={this.onBadToken}
+              {...props}
+            />
+          }/>
+          <Route path={`${this.props.match.path}/:classid/assignments/:assignmentid`} render={(props) => 
+            <SingleAssignmentTeacher
               data={this.state}
               onBadToken={this.onBadToken}
               {...props}

@@ -66,7 +66,7 @@ export default class ClassListStudent extends React.Component{
                                                 <Card.Text><strong>Total Students: </strong>{class_.students_signed_up.length}</Card.Text>
                                                 <Card.Text><strong>Assignments: </strong>{class_.assignments.length}</Card.Text>
                                                 <Card.Text><strong>Class Closes: </strong>{this.removeTimeFromDate(class_.class_end_date)}</Card.Text>
-                                                <Card.Link href={`/my/teacher/classes/${class_.class_uuid}`}>Open Class</Card.Link>
+                                                <Card.Link href={`/my/student/classes/${class_.class_uuid}`}>Open Class</Card.Link>
                                             </Card.Body>
                                         </Card>
                                     )

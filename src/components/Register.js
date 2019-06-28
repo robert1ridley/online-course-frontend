@@ -57,6 +57,7 @@ export default class Register extends React.Component{
       sessionStorage.setItem('refreshToken', response.refresh_token);
       sessionStorage.setItem('uuid', response.user_id);
       sessionStorage.setItem('usertype', this.state.usertype);
+      sessionStorage.setItem('usertype', this.state.username);
       this.setState({
         error: false,
         message: '',

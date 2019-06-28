@@ -4,6 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import AddClassStudent from '../components/AddClassStudent';
 import ClassesListStudent from '../components/ClassesListStudent';
+import SingleClassStudent from '../components/SingleClassStudent';
+import SingleAssignmentStudent from '../components/SingleAssignmentStudent';
 
 export default class StudentMain extends React.Component {
   state = {
@@ -130,13 +132,20 @@ export default class StudentMain extends React.Component {
             {...props}
           />
         }/>
-        {/* <Route path={`${this.props.match.path}/:classid`} render={(props) => 
-          <SingleClassTeacher
+        <Route exact path={`${this.props.match.path}/:classid`} render={(props) => 
+          <SingleClassStudent
             data={this.state}
             onBadToken={this.onBadToken}
             {...props}
           />
-        }/> */}
+        }/>
+        <Route path={`${this.props.match.path}/:classid/assignments/:assignmentid`} render={(props) => 
+          <SingleAssignmentStudent
+            data={this.state}
+            onBadToken={this.onBadToken}
+            {...props}
+          />
+        }/>
       </Switch>
       </div>
     )
