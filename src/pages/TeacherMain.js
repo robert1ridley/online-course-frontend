@@ -102,7 +102,7 @@ export default class TeacherMain extends React.Component {
       return  <Redirect to="/" />
     }
     if (this.state.usertype !== 'TEACHER') {
-      return <p>Access not permitted!</p>
+      return <p>Not auth</p>
     }
     return (
       <div>

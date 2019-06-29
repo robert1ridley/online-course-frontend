@@ -117,13 +117,13 @@ export default class SignIn extends React.Component{
           <div />
         }
         <Form>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control type="name" onChange={this.handleChange('username')} placeholder="Enter username" required/>
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" onChange={this.handleChange('password')} placeholder="Password" required/>
+            <Form.Control type="password" autoComplete='password' onChange={this.handleChange('password')} placeholder="Password" required/>
           </Form.Group>
           <fieldset>
             <Form.Group>

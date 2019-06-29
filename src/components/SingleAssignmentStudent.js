@@ -142,6 +142,13 @@ export default class SingleAssignmentStudent extends React.Component{
 
   render() {
     const { fetchComplete, error, message, assignmentTitle, className, assignmentContent, assignmentDeadline, submissions } = this.state;
+    const submitted = submissions ? true : false
+    let grade = 'Pending ...'
+    if (submitted) {
+      if (submissions.grade) {
+        grade = submissions.grade
+      }
+    }
     if (fetchComplete) {
       if (error) {
         return (
@@ -159,7 +166,7 @@ export default class SingleAssignmentStudent extends React.Component{
               <p style={styles.lowerMargin}><strong>Assignment Instructions: </strong><br/>{assignmentContent}</p>
               <p style={styles.lowerMargin}><strong>Deadline: </strong><br/>{this.removeTimeFromDate(assignmentDeadline)}</p>
               <p style={styles.lowerMargin}><strong>Submitted: </strong><br/>{submissions ? "True" : "False"}</p>
-              <p style={styles.lowerMargin}><strong>Grade: </strong><br/>{submissions ? submissions.grade : "Pending ..."}</p>
+              <p style={styles.lowerMargin}><strong>Grade: </strong><br/>{grade}</p>
               {
                 !submissions &&
                 <div>

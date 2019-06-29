@@ -100,7 +100,7 @@ export default class StudentMain extends React.Component {
       return  <Redirect to="/" />
     }
     if (this.state.usertype !== 'STUDENT') {
-      return <p>Access not permitted!</p>
+      return <p>Not auth</p>
     }
     return (
       <div>

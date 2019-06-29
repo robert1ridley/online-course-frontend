@@ -139,9 +139,12 @@ export default class SingleAssignmentTeacher extends React.Component {
     if (fetchComplete) {
       if (error) {
         return (
-          <Alert variant='danger'>
+          <div>
+            <Alert variant='danger'>
               {message}
-          </Alert>
+            </Alert>
+            <Button onClick={() => window.location.reload()}>Back</Button>
+          </div>
         )
       }
       return (

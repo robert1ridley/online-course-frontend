@@ -104,17 +104,17 @@ export default class Register extends React.Component{
           <div />
         }
         <Form>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control type="name" onChange={this.handleChange('username')} placeholder="Enter username" required/>
           </Form.Group>
-          <Form.Group controlId="formBasicPassword">
+          <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" onChange={this.handleChange('password')} placeholder="Password" required/>
+            <Form.Control type="password" autoComplete='password' onChange={this.handleChange('password')} placeholder="Password" required/>
           </Form.Group>
-          <Form.Group controlId="formBasicPassword">
+          <Form.Group controlId="formPasswordConfirm">
             <Form.Label>Retype Password</Form.Label>
-            <Form.Control type="password" onChange={this.handleChange('passwordConfirm')} placeholder="Password" required/>
+            <Form.Control type="password" autoComplete='password' onChange={this.handleChange('passwordConfirm')} placeholder="Password" required/>
           </Form.Group>
           <fieldset>
             <Form.Group>
