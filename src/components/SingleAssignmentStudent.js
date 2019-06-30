@@ -166,6 +166,10 @@ export default class SingleAssignmentStudent extends React.Component{
               <p style={styles.lowerMargin}><strong>Assignment Instructions: </strong><br/>{assignmentContent}</p>
               <p style={styles.lowerMargin}><strong>Deadline: </strong><br/>{this.removeTimeFromDate(assignmentDeadline)}</p>
               <p style={styles.lowerMargin}><strong>Submitted: </strong><br/>{submissions ? "True" : "False"}</p>
+              {
+                submissions &&
+                <p style={styles.lowerMargin}><strong>Submitted Content: </strong><br/>{submissions.content}</p>
+              }
               <p style={styles.lowerMargin}><strong>Grade: </strong><br/>{grade}</p>
               {
                 !submissions &&
